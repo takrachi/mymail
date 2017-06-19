@@ -1,9 +1,8 @@
 # mymail
 
-Le fichier account.enc doit contenir les adresses courriel et leur password avec le format `email,password`
+Le fichier account.enc contient les courriels et mot de passe chiffree `email,password`
 	ex. 
 		John@gmail.com,123456
 		Smith@outlook.com,password
-Le fichier account.enc doit aussi etre chiffre en CBC aes avec une cle de 16 octets pour pouvoir etre traite par le programme
 
-
+J'ai utilise le mode d'operation CBC pour le chiffrement du fichier account.enc
