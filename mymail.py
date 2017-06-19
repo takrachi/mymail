@@ -1,6 +1,7 @@
 #!/usr/bin/env python2.7
-import imaplib, email, getpass
+import imaplib, getpass
 from email.header import decode_header
+from email import message_from_string
 from itertools import cycle
 from Crypto.Cipher import AES
 
@@ -27,7 +28,6 @@ class Accounts:
 
 # Classe pour couleurs sur terminal
 class colors:
-    HEADER = '\033[95m'
     BLUE = '\033[94m'
     GREEN = '\033[92m'
     YELLOW = '\033[93m'
@@ -52,12 +52,11 @@ def getemail(acc):
     # Courriel non-lu trouves
     if data[0] != '':
         print colors.GREEN + " ++ New mails" + colors.ENDC
-        uids = data[0].split()
-        typ, messages = mail.uid('fetch', ','.join(uids[-5:]), '(BODY.PEEK[HEADER])')
+        typ, messages = mail.uid('fetch', ','.join(data[0].split()), '(BODY.PEEK[HEADER])')
         
         # Parcourt les nouveau courriels
         for _, message in messages[::2]:
-            msg_d = decode_header(email.message_from_string(message).get('from'))
+            msg_d = decode_header(message_from_string(message).get('from'))
             try:
                 msg_d = msg_d[0][0].decode(str(msg_d[0][1]))
             except LookupError:
