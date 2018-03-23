@@ -1,8 +1,12 @@
 # mymail
 
-Le fichier account.enc contient les courriels et mot de passe chiffree `email,password`
-	ex. 
-		John@gmail.com,123456
-		Smith@outlook.com,password
+L'app prend un fichier (account.enc) contenant les comptes courriel à lire avec leurs mots de passe dans ce format : 
 
-J'ai utilise le mode d'operation CBC pour le chiffrement du fichier account.enc
+`email,password`
+
+ex.
+
+john@gmail.com,12345
+
+J'ai utilisé un chiffrement AES de mode d'opération CBC parce que j'aime le CBC.
+
